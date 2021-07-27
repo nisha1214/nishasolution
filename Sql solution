@@ -1,0 +1,11 @@
+select
+b.Business,
+p.StreetNo,
+p.Street,
+p.PostCode,
+sum(f.count) as FootfallCount
+from
+footfall f
+inner join premises p on p.id = f.premisesid
+inner join businesses b on b.id = p.businessid
+group by b.Business, p.StreetNo, p.Street, p.PostCode;
